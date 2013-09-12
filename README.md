@@ -1,5 +1,5 @@
-`screenhack-rebel`
-==================
+screenhack-rebel
+================
 
 > **rebel**, *n*.
 >   A person who resists an established authority, often violently.

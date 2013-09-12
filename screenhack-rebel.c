@@ -45,7 +45,7 @@
 static int (*old_execve)(const char *filename, char *const argv[],
                          char *const envp[]);
 
-int execve (const char *filename, char *const argv[], char *const envp[]) {
+int execve(const char *filename, char *const argv[], char *const envp[]) {
   char alternate[BUFSIZE];
   old_execve = dlsym(RTLD_NEXT, "execve");
   printf("screenhack-rebel: execve hook: %s\n", filename);
