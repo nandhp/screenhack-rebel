@@ -48,7 +48,7 @@ static int (*old_execve)(const char *filename, char *const argv[],
 int execve(const char *filename, char *const argv[], char *const envp[]) {
   char alternate[BUFSIZE];
   old_execve = dlsym(RTLD_NEXT, "execve");
-  printf("screenhack-rebel: execve hook: %s\n", filename);
+  fprintf(stderr, "screenhack-rebel: execve hook: %s\n", filename);
 
   /* Check for our signal and override the filename if found */
   if ( strstr(filename, "gnome-screensaver/floaters") ) {
@@ -57,8 +57,8 @@ int execve(const char *filename, char *const argv[], char *const envp[]) {
     if ( rc > 0 && rc < BUFSIZE )
       filename = alternate;
     else
-      printf("screenhack-rebel: snprintf error: %d\n", rc);
-    printf("screenhack-rebel: actually execing: %s\n", filename);
+      fprintf(stderr, "screenhack-rebel: snprintf error: %d\n", rc);
+    fprintf(stderr, "screenhack-rebel: actually execing: %s\n", filename);
   }
   return old_execve(filename, argv, envp);
 }
