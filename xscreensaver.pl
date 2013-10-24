@@ -91,16 +91,18 @@ my @opt_forward = ();
 foreach ( @ARGV ) {
     if ( $_ eq '-help' ) {
         print STDERR <<EOF;
-$0 [-echo|-print] [-window] [...]
+$0 [-echo|-print] [-window]
 Emulate behavior xscreensaver for screenhack-rebel: run a random
-screenhack from ~/.xscreensaver. Unrecognized options are passed
-to the chosen screenhack.
+screenhack from ~/.xscreensaver.
 EOF
         exit 1; #/
     }
     elsif ( $_ eq '-echo' or $_ eq '-print' ) { $opt_echo = 1 }
     elsif ( $_ eq '-window' ) { $opt_window = 1 }
-    else { push @opt_forward, $_ }
+    # FIXME: This doesn't work when replacing Floaters
+    # else { push @opt_forward, $_ }
+    # [...]
+    # "Unrecognized options are passed to the chosen screenhack."
 }
 
 # Load the list of enabled screensavers
