@@ -20,7 +20,7 @@ used with gnome-screensaver. You may be able to do this in System ->
 Preferences -> Startup Applications by changing the command for
 "Screensaver" from `gnome-screensaver` to
 
-    sh -c 'LD_PRELOAD=/path/to/my-screensaver.so exec gnome-screensaver'
+    sh -c 'LD_PRELOAD=/path/to/screenhack-rebel.so exec gnome-screensaver'
 
 You will have to restart gnome-screensaver for this to take effect.
 
@@ -32,6 +32,14 @@ make it executable. A simple shell script like this will suffice:
 
     #!/bin/sh
     exec /path/to/xscreensaver/hacks/kumppa -root
+
+You can also make it a symlink to `xscreensaver.pl`, which will choose
+a random enabled screensaver from your `~/.xscreensaver` file and run
+it. It will look for the screenhacks in `/usr/lib/xscreensaver` and
+`/usr/libexec/xscreensaver`, which are popular locations for Linux
+distributions to put them. If they aren't installed there, set the
+`XSCREENSAVER_HOME` environment variable to the location of the source
+distribution (or your unusual equivalent to `/usr/lib/xscreensaver`).
 
 How does it work?
 -----------------
