@@ -2,7 +2,7 @@
 # Makefile for screenhack-rebel
 #
 
-CFLAGS=-Wall
+CFLAGS=-g -Wall `pkg-config --cflags gtk+-2.0` -DHOOK_GDK_SPAWN
 
 all: screenhack-rebel.so
 
